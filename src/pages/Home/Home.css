@@ -59,3 +59,53 @@
 .hero-btns .dark-btn:hover{
     background: #6d6d6e66;
 }
+@media (max-width: 1024px) {
+    .hero-caption.title-cards{
+ display: none;
+    }
+    .caption-img{
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+ 
+    .hero-btns{
+        margin-bottom: 30px;
+        
+ 
+    }
+} /* <-- Add this closing brace for the 1024px media query */
+@media (max-width: 800px){
+    .hero-caption {
+     padding-left: 4%;
+    }
+    .caption-img{
+       margin-bottom: 10px;
+       width: 40%;
+    }
+    .hero-caption p{
+        font-size: 10px;
+        margin-bottom: 60px;
+    }
+    .hero-btn .btn img{
+        width: 19px;
+    }
+    .none-cards{
+        padding-left: 4%;
+    }
+}
+@media (max-width: 500px) {
+    .caption img{
+    display: none;
+    }
+  
+   .hero-btn.btn img{
+    width: 15px;
+   }
+   .hero-btn.btn{
+    padding: 5px 12px;
+    font-size: 14px;
+    gap:6px;
+
+}
+}

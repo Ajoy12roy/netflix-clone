@@ -10,7 +10,7 @@ padding: 20px 8%;
 .login-from{
     width: 100%;
     max-width: 450px;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgb(66, 65, 61);
     border-radius: 4px;
     padding: 60px;
     margin: auto;
@@ -24,7 +24,7 @@ padding: 20px 8%;
 .login-from input{
     width: 100%;
     height: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0,6 );
     color: white;
     border: 0;
     border-radius: 4px;
@@ -82,4 +82,25 @@ padding: 20px 8%;
     cursor: pointer;
     font-weight: 600;
 }
+.login-spinner{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.login-spinner img{
+    width: 60px;
+   
+}
+@media (max-width: 600px) {
+    .login{
+        padding: 20px 5%;
+    }
+}
+.login-from{
+    padding: 20px;
+    margin-top: 30px;
 
+}

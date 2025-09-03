@@ -1,17 +1,16 @@
-
 import { initializeApp } from "firebase/app";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
-import { 
-   createUserWithEmailAndPassword,
-   getAuth,
-   signInWithEmailAndPassword,
-  signOut } from "firebase/auth";
-import { addDoc,
-   getFirestore,
-   collection } from "firebase/firestore";
-
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBkyFSoTrFTk99CGx0l GfsYz3HpGnQ",
+  apiKey: "AIzaSyBkyFSoTrFTk99CGx0lIhgrGfsYz3HpGnQ",
   authDomain: "netflix-clone-1e3d9.firebaseapp.com",
   projectId: "netflix-clone-1e3d9",
   storageBucket: "netflix-clone-1e3d9.firebasestorage.app",
@@ -19,37 +18,38 @@ const firebaseConfig = {
   appId: "1:1057354397668:web:19c362181ce74675d579f1"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const signup = async( name,email,password)=>{
-    try{
-       const res = await createUserWithEmailAndPassword(auth,email,password);
-         const user = res.user;
-            await addDoc(collection(db,"users"),{
-                uid:user.uid,
-                name,
-                authProvider:"local",
-                email,
-            });
-          
-    }  catch(err){
-        console.error(err);
-        alert(err.message);
-    }
-
-}
-const login = async ()=>{
-  try{
-    await signInWithEmailAndPassword(auth,email,password);
-  }catch(err){
-    console.log(err);
-    alert(err.message);
+const signup = async (name, email, password) => {
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    await setDoc(doc(db, "users", user.uid), {
+      uid: user.uid,
+      name,
+      authProvider: "local",
+      email,
+    });
+  } catch (err) {
+    console.error(err);
+ toast.error(err.code.split('/')[1].split('-').join(" ") );
   }
-}
-const logout =()=>{ 
+};
+
+const login = async (email, password) => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (err) {
+    console.error(err);
+    toast.error(err.code.split('/')[1].split('-').join(" ") );
+  
+  }
+};
+
+const logout = () => {
   signOut(auth);
-}
-export {auth,db,signup,login,logout};
+};
+
+export { auth, db, signup, login, logout };

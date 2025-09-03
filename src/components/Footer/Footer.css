@@ -27,3 +27,14 @@
    
     
 }
+@media (max-width: 800px) {
+    .footer ul{
+        grid-template-columns: auto auto;
+        gap: 10px;
+        font-size: 14px;
+    }
+    .footer-icons img {
+        
+        width:25px
+    }
+}
